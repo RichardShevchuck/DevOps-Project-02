@@ -72,4 +72,13 @@ module "app_auto_scaling_group" {
     module.vpc_private.private_subnet_id0,
     module.vpc_private.private_subnet_id1
   ]
+  target_group_arn = module.alb.target_group_arn
+}
+
+module "alb" {
+  source                = "./modules/alb"
+  alb_security_group_id = module.security_groups.alb_sg_id
+  public_subnet_id0     = module.vpc_private.private_public_subnet_id
+  public_subnet_id1     = module.vpc_private.private_public_subnet_id1
+  vpc_id                = module.vpc_private.vpc_alb_id
 }

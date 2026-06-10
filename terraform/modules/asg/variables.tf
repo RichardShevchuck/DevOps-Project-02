@@ -33,3 +33,8 @@ variable "subnet_ids" {
   description = "List of subnet IDs for the Auto Scaling group"
   type        = list(string)
 }
+
+variable "target_group_arn" {
+  description = "ALB target group ARN"
+  type        = string
+}
